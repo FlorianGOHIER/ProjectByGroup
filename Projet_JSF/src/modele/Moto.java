@@ -1,5 +1,11 @@
 package modele;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
 public class Moto {
 	
 	private String marque;
@@ -11,7 +17,14 @@ public class Moto {
 	private String type_moteur;
 	private String[] style_moto;
 	
+	private List<String> types;
+	
 	public Moto() {
+		
+		this.types = new ArrayList<>();
+		this.types.add("Bicylindre");
+		this.types.add("Monocylindre");
+		this.types.add("Quatre Cylindres");
 	}
 	
 
@@ -71,11 +84,24 @@ public class Moto {
 	public void setType_moteur(String type_moteur) {
 		this.type_moteur = type_moteur;
 	}
-	public String getStyle_moto() {
+
+
+	public String[] getStyle_moto() {
 		return style_moto;
 	}
-	public void setStyle_moto(String style_moto) {
+
+
+	public void setStyle_moto(String[] style_moto) {
 		this.style_moto = style_moto;
+	}
+
+
+	public List<String> getTypes() {
+		return types;
+	}
+
+	public void setTypes(List<String> types) {
+		this.types = types;
 	}
 	
 }

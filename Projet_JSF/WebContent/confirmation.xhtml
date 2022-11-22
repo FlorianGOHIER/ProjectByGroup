@@ -6,17 +6,26 @@
 
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:a="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:a="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 	<!-- Header -->
 	<h:head>
-		<title>Ajout moto</title>
+		<title>Confirmation</title>
 	</h:head>
 	
 	<!-- body -->
 	<h:body>
 	
-		Ajout
+		Une moto #{moto.modele} de marque #{moto.marque} a été créée.
+		<br/><br/>
+		La moto correspond au(x) style(s) suivant(s) : 
+		<ul>
+			<a:repeat var="style" value="#{moto.style_moto}">
+				<li>#{style}</li>
+			</a:repeat>
+		</ul>
+		<br/><br/>
 		
 	</h:body>
 
