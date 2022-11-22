@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
           "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
           
-
 <html 
 
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:a="http://xmlns.jcp.org/jsf/facelets">
+	xmlns:a="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 	<!-- Header -->
 	<h:head>
@@ -16,7 +16,89 @@
 	<!-- body -->
 	<h:body>
 	
-		Ajout
+		<h1>Enregistrer votre bécane :</h1>
+		
+		<h:form>
+			<label>Marque : </label>
+			<h:inputText 
+			id="marque" 
+			value="#{moto.marque}" 
+			required="true" 
+			requiredMessage="Veuillez saisir une marque." />
+			<h:messages for="marque" style="color:red" />
+			<br/>
+			
+			<label>Modèle : </label>
+			<h:inputText 
+			id="modele" 
+			value="#{moto.modele}" 
+			required="true" 
+			requiredMessage="Veuillez saisir un modèle." />
+			<h:messages for="modele" style="color:red" />
+			<br/>
+			
+			<label>Année de fabrication : </label>
+			<h:inputText 
+			id="annee" 
+			value="#{moto.annee}" 
+			required="true" 
+			validatorMessage="Veuillez renseigner une date entre 2000 et 2022.">
+				<f:validateLongRange minimum="2000" maximum="2022"/>
+			</h:inputText>
+			<h:messages for="annee" style="color:red" />
+			<br/>
+			
+			<label>Chevaux fiscaux : </label>
+			<h:inputText 
+			id="cv" 
+			value="#{moto.cv}" 
+			required="true" 
+			validatorMessage="Veuillez renseigner un nombre entre 1 et 15.">
+				<f:validateLongRange minimum="1" maximum="15"/>
+			</h:inputText>
+			<h:messages for="cv" style="color:red" />
+			<br/>
+			
+			<label>Cylindrée : </label>
+			<h:inputText
+			id="cylindree" 
+			value="#{moto.cylindree}" 
+			required="true" 
+			validatorMessage="Veuillez renseigner un nombre à trois chiffres maximum.">
+				<f:validateLength minimum="1" maximum="3"/>
+			</h:inputText>
+			<h:messages for="cylindree" style="color:red" />
+			<br/>
+			
+			<label>Référence : </label>
+			<h:inputText 
+			id="reference" 
+			value="#{moto.reference}" 
+			required="true" 
+			requiredMessage="La référence doit être au format suivant : AWS-xxxxx.">
+				<f:validateRegex pattern="^AWS-+\d{5}" />
+			</h:inputText>
+			<h:messages for="reference" style="color:red" />
+			<br/>
+			
+			<label>Type de moteur : </label>
+			<h:selectOneMenu value="#{moto.type_moteur}">
+				<f:selectItems value="#{moto.types}" />
+			</h:selectOneMenu>
+			<br/>
+			
+			<label>Style de moto : </label>
+			<h:selectManyCheckbox value="#{moto.style_moto}">
+				<f:selectItem itemValue="Tout terrain" />
+				<f:selectItem itemValue="Roadster" />
+				<f:selectItem itemValue="Sportive" />
+				<f:selectItem itemValue="Custom" />
+				<f:selectItem itemValue="Trail" />
+			</h:selectManyCheckbox>
+			<br/>
+			
+			<h:commandButton value="register" action="confirmation" />
+		</h:form>
 		
 	</h:body>
 
